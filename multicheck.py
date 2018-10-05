@@ -1,6 +1,6 @@
 __author__ = 'xcbtrader'
 # -*- coding: utf-8 -*-
-# Changed To English 'BronxAnarchY'
+# Changed To English 'BronxPhoneix'
 
 import requests
 import json
