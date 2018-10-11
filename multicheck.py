@@ -35,18 +35,6 @@ def b1(addr):
 			
 def b2(addr):
 	try:
-		request = 'https://blockexplorer.com/api/addr/' + addr
-		response = requests.get(request, timeout=10)
-		content = response.json()
-		content = int(content['balanceSat'])
-		return content
-	except KeyboardInterrupt:
-		exit()
-	except Exception:
-		return -1
-
-def b3(addr):
-	try:
 		request = 'https://www.bitgo.com/api/v1/address/' + addr
 		response = requests.get(request, timeout=10)
 		content = response.json()
@@ -57,7 +45,7 @@ def b3(addr):
 	except Exception:
 		return -1
 	
-def b4(addr):
+def b3(addr):
 	try:
 		request = 'https://api.blocktrail.com/v1/btc/address/' + addr + '?api_key=MY_APIKEY'
 		response = requests.get(request, timeout=10)
@@ -69,7 +57,7 @@ def b4(addr):
 	except Exception:
 		return -1
 		
-def b5(addr):
+def b4(addr):
 	try:
 		request = 'https://insight.bitpay.com/api/addr/' + addr + '/?noTxList=1'
 		response = requests.get(request, timeout=10)
@@ -128,22 +116,11 @@ while naddr<= len(addresses):
 		if balans != -1:
 			print (addresses[naddr] + ' = ' + str(balans))
 			time.sleep(pause)
-			n = 5
-			naddr +=1
-			nerror = 0
-		else:
-			n = 5
-			nerror += 1
-	elif n == 5:
-		balans = b5(addresses[naddr])
-		if balans != -1:
-			print (addresses[naddr] + ' = ' + str(balans))
-			time.sleep(pause)
 			n = 1
 			naddr +=1
 			nerror = 0
 		else:
 			n = 1
 			nerror += 1
-	if nerror > 5:
+	if nerror > 4:
 		exit()
