@@ -69,7 +69,7 @@ while naddr<= len(addresses):
 	if n == 1:
 		balans = b1(addresses[naddr])
 		if balans != -1:
-			print (addresses[naddr] + ' = ' + str(balans/100000000) + 'b1')
+			print (addresses[naddr] + ' = ' + str(balans/100000000))
 			time.sleep(pause)
 			n = 2
 			naddr +=1
@@ -80,7 +80,7 @@ while naddr<= len(addresses):
 	elif n == 2:
 		balans = b2(addresses[naddr])
 		if balans != -1:
-			print (addresses[naddr] + ' = ' + str(balans/100000000) + 'b2')
+			print (addresses[naddr] + ' = ' + str(balans/100000000))
 			time.sleep(pause)
 			n = 3
 			naddr +=1
@@ -91,7 +91,7 @@ while naddr<= len(addresses):
 	elif n == 3:
 		balans = b3(addresses[naddr])
 		if balans != -1:
-			print (addresses[naddr] + ' = ' + str(balans/100000000) + 'b3' )
+			print (addresses[naddr] + ' = ' + str(balans/100000000))
 			time.sleep(pause)
 			n = 1
 			naddr +=1
