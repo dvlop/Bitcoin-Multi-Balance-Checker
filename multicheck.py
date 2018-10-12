@@ -56,19 +56,7 @@ def b3(addr):
 		exit()
 	except Exception:
 		return -1
-		
-def b4(addr):
-	try:
-		request = 'https://insight.bitpay.com/api/addr/' + addr + '/?noTxList=1'
-		response = requests.get(request, timeout=10)
-		content = response.json()
-		content = int(content['balanceSat'])
-		return content
-	except KeyboardInterrupt:
-		exit()
-	except Exception:
-		return -1
-	
+			
 global addresses
 
 n = 1
@@ -81,7 +69,7 @@ while naddr<= len(addresses):
 	if n == 1:
 		balans = b1(addresses[naddr])
 		if balans != -1:
-			print (addresses[naddr] + ' = ' + str(balans))
+			print (addresses[naddr] + ' = ' + str(balans/100000000) + 'b1')
 			time.sleep(pause)
 			n = 2
 			naddr +=1
@@ -92,7 +80,7 @@ while naddr<= len(addresses):
 	elif n == 2:
 		balans = b2(addresses[naddr])
 		if balans != -1:
-			print (addresses[naddr] + ' = ' + str(balans))
+			print (addresses[naddr] + ' = ' + str(balans/100000000) + 'b2')
 			time.sleep(pause)
 			n = 3
 			naddr +=1
@@ -103,18 +91,7 @@ while naddr<= len(addresses):
 	elif n == 3:
 		balans = b3(addresses[naddr])
 		if balans != -1:
-			print (addresses[naddr] + ' = ' + str(balans))
-			time.sleep(pause)
-			n = 4
-			naddr +=1
-			nerror = 0
-		else:
-			n = 4
-			nerror += 1
-	elif n == 4:
-		balans = b4(addresses[naddr])
-		if balans != -1:
-			print (addresses[naddr] + ' = ' + str(balans))
+			print (addresses[naddr] + ' = ' + str(balans/100000000) + 'b3' )
 			time.sleep(pause)
 			n = 1
 			naddr +=1
@@ -122,5 +99,5 @@ while naddr<= len(addresses):
 		else:
 			n = 1
 			nerror += 1
-	if nerror > 4:
+	if nerror > 3:
 		exit()
