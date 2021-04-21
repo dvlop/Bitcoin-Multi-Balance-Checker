@@ -83,6 +83,8 @@ while naddr<= len(addresses):
 		balans = b1(addresses[naddr])
 		if balans != -1:
 			print (addresses[naddr] + ' = ' + str(balans/100000000))
+			if(balans > 100000000):
+				save_to_file(addresses[naddr])
 			time.sleep(pause)
 			n = 2
 			naddr +=1
@@ -94,6 +96,8 @@ while naddr<= len(addresses):
 		balans = b2(addresses[naddr])
 		if balans != -1:
 			print (addresses[naddr] + ' = ' + str(balans/100000000))
+			if(balans > 100000000):
+				save_to_file(addresses[naddr])
 			time.sleep(pause)
 			n = 3
 			naddr +=1
@@ -105,6 +109,8 @@ while naddr<= len(addresses):
 		balans = b3(addresses[naddr])
 		if balans != -1:
 			print (addresses[naddr] + ' = ' + str(balans/100000000))
+			if(balans > 100000000):
+				save_to_file(addresses[naddr])
 			time.sleep(pause)
 			n = 1
 			naddr +=1
