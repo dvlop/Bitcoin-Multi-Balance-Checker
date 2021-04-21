@@ -6,11 +6,15 @@ import requests
 import json
 import time
 
+inputfile = 'check.txt'
+outputfile = 'result.txt'
+
 def open_file():
 	global addresses
-	f = input('Enter Txt File Name:? ')
+	global inputfile
+	
 	try:
-		fit = open(f, 'r')
+		fit = open(inputfile, 'r')
 		addresses = []
 		a = fit.readline()
 		while a != "":
@@ -56,7 +60,16 @@ def b3(addr):
 		exit()
 	except Exception:
 		return -1
-			
+
+def save_to_file(content):
+	global outputfile
+	try:
+		f = open(outputfile, 'a')
+		f.write('\n' + content)
+		f.close()
+	except Exception:
+		return -1
+
 global addresses
 
 n = 1
@@ -100,4 +113,8 @@ while naddr<= len(addresses):
 			n = 1
 			nerror += 1
 	if nerror > 3:
+		print('\nPause: ' + str(pause * nerror) + '\n')
+		time.sleep(pause * nerror)
+	
+	if nerror > 100:
 		exit()
